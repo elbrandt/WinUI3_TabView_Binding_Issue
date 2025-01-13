@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace TabViewDemo
@@ -18,20 +19,19 @@ namespace TabViewDemo
         private async Task TestAdd()
         {
             Tabs.Add(new TabViewModel(++_globalCounter));
+            await Task.CompletedTask;
         }
     }
 
-    public class TabViewModel
+    public partial class TabViewModel : ObservableObject
     {
 
         public TabViewModel(int number)
         {
             MyNumber = number;
-
         }
 
-
-        public int MyNumber { get; }
+        [ObservableProperty] private int _myNumber = 0;
 
     }
 }
