@@ -7,7 +7,6 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -38,17 +37,6 @@ namespace TabViewDemo
         private void TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
         {
             ViewModel.Tabs.Remove(args.Item as TabViewModel);
-        }
-
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            // this is being done from a button as proof that it works.
-            // there are cleaner ways and places to do this in real code.
-            foreach (var t in tabView.TabItems)
-            {
-                var d = this.tabView.ContainerFromItem(t);
-                ((MyControl)((TabViewItem)d).Content).UpdateBindings();
-            }
         }
     }
 }

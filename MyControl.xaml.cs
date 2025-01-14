@@ -27,9 +27,5 @@ namespace TabViewDemo
 
         public TabViewModel ViewModel => DataContext as TabViewModel;
 
-        public void UpdateBindings()
-        {
-            Bindings.Update();
-        }
     }
 }
