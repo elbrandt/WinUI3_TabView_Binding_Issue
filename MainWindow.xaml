@@ -13,8 +13,11 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Add Tab" Command="{x:Bind ViewModel.TestAddCommand}"/>
-        <TabView Grid.Row="1" TabItemsSource="{x:Bind ViewModel.Tabs, Mode=OneWay}" TabCloseRequested="TabCloseRequested" IsAddTabButtonVisible="False">
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <Button Content="Add Tab" Command="{x:Bind ViewModel.TestAddCommand}"/>
+        <Button Content="Refresh Bindings" Click="ButtonBase_OnClick"/>
+        </StackPanel>
+        <TabView Grid.Row="1" x:Name="tabView" TabItemsSource="{x:Bind ViewModel.Tabs, Mode=OneWay}" TabCloseRequested="TabCloseRequested" IsAddTabButtonVisible="False">
             <TabView.TabItemTemplate>
                 <DataTemplate x:DataType="local:TabViewModel">
                     <TabViewItem Header="{x:Bind MyNumber, Mode=OneWay}">
